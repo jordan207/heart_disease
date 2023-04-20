@@ -14,7 +14,6 @@ const jsondata = {
 	diabetes: false,
     sysBP: false,
     diaBP: false,
-    TenYearCHD: false,
 	gender: 'male',
 }
 
@@ -190,29 +189,29 @@ function submit() {
 			result = JSON.parse(e.target.responseText);
 			message = result.message;
 			$(".page-loader").empty();
-			$("#content").empty();
-			$("#content").append(`
-			<div
-			class=""
-			style="height: 85vh; position: relative; "
-			>
-				<div
-				style="
-					margin: 0;
-					position: absolute;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -50%);
-					text-align: center;
-				"
-				>
-			  <h1>${message}</h1>
-			  <p>Our recommended online clinic - <a href="https://www.doctoroncall.com.my/">DoctorOnCall</a></p>
-			  <a href="/" class="btn btn-primary">Go Back Home</a>
-			</div>
-			 </div>
-			`)
-		}
+		 	$("#content").empty();
+		 	$("#content").append(`
+		 	<div
+		 	class=""
+		 	style="height: 85vh; position: relative; "
+		 	>
+		 		<div
+		 		style="
+		 			margin: 0;
+		 			position: absolute;
+		 			top: 50%;
+		 			left: 50%;
+		 			transform: translate(-50%, -50%);
+		 			text-align: center;
+		 		"
+		 		>
+		 	  <h1>${message}</h1>
+		 	  <p>Our recommended online clinic - <a href="https://www.doctoroncall.com.my/">DoctorOnCall</a></p>
+		 	  <a href="/" class="btn btn-primary">Go Back Home</a>
+		 	</div>
+		 	 </div>
+		 	`)
+		 }
 		if (this.status == 400) {
 			alert("Server returned: ", e.target.responseText);
 		}

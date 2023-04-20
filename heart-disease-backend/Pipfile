@@ -8,6 +8,9 @@ fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
 python-multipart = "*"
 pandas = "*"
+gunicorn = "*"
+joblib = "*"
+scikit-learn = "*"
 
 [dev-packages]
 

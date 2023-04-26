@@ -61,7 +61,7 @@ heartRate: int = Form(...),
 
         # result
         result = model.predict(X_scaled)
-        message = "you have heart diseases" if result[0] else "congratulation you dont have heart disease"
+        message = "you have heart diseases" if result[0] == 1 else "congratulation you dont have heart disease"
         print(message)
         return {"message": message, "heart_disease": True if result[0] == 1 else False}
     except Exception as e:

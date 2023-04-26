@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="An impressive and flawless site template that includes constious UI elements and countless features, attractive ready-made blocks and rich pages, basically everything you need to create a unique and professional website." />
+    <meta name="keywords"
+        content="bootstrap 5, business, corporate, creative, gulp, marketing, minimal, modern, multipurpose, one page, responsive, saas, sass, seo, startup, html5 template, site template" />
+    <meta name="author" content="elemis" />
+    <title>COVID 19 Cough Audio Detection</title>
+    <link rel="shortcut icon" href="./assets/img/favicon.png" />
+    <link rel="stylesheet" href="./assets/css/plugins.css" />
+    <link rel="stylesheet" href="assets/css/master.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="./app.css" />
+</head>
+
+<body>
+    <div class="page-loader"></div>
+    <nav class="navbar navbar-default navbar-fixed navbar-transparent white bootsnav on no-full">
+        <!--=== Start Top Search ===-->
+        <div class="fullscreen-search-overlay" id="search-overlay"> <a href="#" class="fullscreen-close" id="fullscreen-close-button"><i class="mdi mdi-close"></i></a>
+          <div id="fullscreen-search-wrapper">
+            <form method="get" id="fullscreen-searchform" style="top: 380px;">
+              <input type="text" value="" placeholder="Type and hit Enter..." id="fullscreen-search-input" class="search-bar-top">
+              <i class="fullscreen-search-icon mdi mdi-magnify">
+              <input value="" type="submit">
+              </i>
+            </form>
+          </div>
+        </div>
+        <!--=== End Top Search ===-->
+    
+        <div class="container">
+          <!--=== Start Atribute Navigation ===-->
+          <!--=== End Atribute Navigation ===-->
+    
+          <!--=== Start Header Navigation ===-->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"> <i class="mdi mdi-menu"></i> </button>
+            <div class="logo"> <a href="index.html"> <img class="logo logo-display" src="assets/images/heartsight_logo.png" alt=""> <img class="logo logo-scrolled" src="assets/images/heartsight_logo.png" alt=""> </a> </div>
+          </div>
+          <!--=== End Header Navigation ===-->
+    
+          <!--=== Collect the nav links, forms, and other content for toggling ===-->
+          <div class="collapse navbar-collapse" id="navbar-menu">
+            <ul class="nav navbar-nav navbar-right" data-in="fadeIn" data-out="fadeOut">
+              <li><a class="page-scroll" href="index.html#home">Home</a></li>
+              <li><a class="page-scroll" href="index.html#about">About Us</a></li>
+              <li><a class="page-scroll" href="index.html#symptom">Symptoms</a></li>
+              <li><a class="page-scroll" href="index.html#prevention">Prevention</a></li>
+              <li><a class="page-scroll" href="index.html#doctor">Our Doctors</a></li>
+              <li><a class="page-scroll" href="index.html#faqs">FAQs</a></li>
+              <li><a class="page-scroll" href="index.html#blog">Blogs</a></li>
+            </ul>
+          </div>
+          <!--=== /.navbar-collapse ===-->
+        </div>
+      </nav>
+    <div class="container">
+        <section class="bg-soft-primary feature-box-rounded" id="content">
+            <div class="">
+                <div class="row gx-lg-8 gx-xl-12 gy-10 mb-5 align-items-center">
+                    <div class="card">
+                        <div class="card-header">
+                            <h1 class="title" id="title">Disclaimer</h1>
+                        </div>
+                        <div class="card-body">
+                            This study aims to build upon previous research that has shown a high sensitivity in
+                            identifying
+                            respiratory illness based on the human voice. Any effective disease detection tools will be
+                            integrated
+                            into an app at a later time. Participation in this study is entirely voluntary, and the
+                            information
+                            collected will not include any personally identifiable details.
+                            <br /><br />
+                            The 3 / 3 pages and data collection process should take approximately five minutes. Please
+                            ensure that your
+                            device is approximately 20 cm away from your face during the 3 / 3 pages, and that the
+                            3 / 3 pages environment
+                            is quiet. Before sharing the 3 / 3 pages device with others, please sanitize it. The Ethics
+                            Committee at the
+                            Indian Institute of Science has approved the non-invasive 3 / 3 pages procedure.
+                            <br /><br />
+                            If you have any questions, please don't hesitate to contact us at tp051098@apu.mail.edu.my.
+
+
+                            <!--/.card-body -->
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary" id="prev-btn" onclick="handleStep('')">Prev</button>
+                            <button class="btn btn-primary" id="next-btn" onclick="handleStep('1 / 3 pages')">
+                                Next</button>
+                            <button class="btn btn-primary" id="submit-btn" onclick="submit()"> Submit</button>
+
+                        </div>
+                        <!--/.card-footer -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container -->
+        </section>
+    </div>
+    <!-- /.content-wrapper -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
+
+    <script src="./recorder.js"></script>
+    <script src="./assets/js/plugins.js"></script>
+    <script src="./app.js"></script>
+    <script src="./assets/js/theme.js"></script>
+    <script>
+        let steps = ["Disclaimer", "1 / 3 pages", "2 / 3 pages", "3 / 3 pages"]
+        let currStep = "Disclaimer";
+
+        $("#prev-btn").hide();
+        $("#submit-btn").hide();
+
+        function handleStep(step) {
+            currStep = step;
+            $(".card-body").empty();
+            if (currStep == "Disclaimer") {
+                $("#title").text("Disclaimer");
+                $("#prev-btn").hide();
+                html = `
+        This study aims to build upon previous research that has shown a high sensitivity in identifying respiratory illness based on the human voice. Any effective disease detection tools will be integrated into an app at a later time. Participation in this study is entirely voluntary, and the information collected will not include any personally identifiable details.
+        <br/><br/>
+        The 3 / 3 pages and data collection process should take approximately five minutes. Please ensure that your device is approximately 20 cm away from your face during the 3 / 3 pages, and that the 3 / 3 pages environment is quiet. Before sharing the 3 / 3 pages device with others, please sanitize it. The Ethics Committee at the Indian Institute of Science has approved the non-invasive 3 / 3 pages procedure.
+        <br/><br/>
+        If you have any questions, please don't hesitate to contact us at tp051098@apu.mail.edu.my.`
+                $(".card-body").append(html);
+                $("#next-btn").attr("onclick", "handleStep('1 / 3 pages')");
+            }
+            if (currStep == "1 / 3 pages") {
+                $("#title").text("1 / 3 pages");
+                $("#prev-btn").show();
+                $("#prev-btn").attr("onclick", "handleStep('Disclaimer')");
+                $("#next-btn").attr("onclick", "handleStep('2 / 3 pages')");
+                html = `
+                <div class="input-margin mb-3 row">
+                <label for="age" class="col-sm-2 col-form-label">What Is Your Age?</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" id="age" name="age" placeholder="22" value=${jsondata.age}
+                    onchange="dataChange('age')" />
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="" class="col-sm-2 col-form-label">Your Education?</label>
+                <div class="col-sm-10 ">
+                    <div class="form-check vaccination_input">
+                    <input class="form-check-input" type="radio" name="education_yrs" onChange="handleRadioData('education_yrs')" id="less_than_high_school" value="0"
+                      checked />
+                    <label class="form-check-label" for="less_than_high_school">
+                        Less than high school
+                    </label>
+                  </div>
+                  <div class="form-check vaccination_input">
+                    <input class="form-check-input" type="radio" name="education_yrs" onChange="handleRadioData('education_yrs')" id="high_school_or_equivalent" value="1"
+                      checked />
+                    <label class="form-check-label" for="high_school_or_equivalent">
+                        High school or equivalent
+                    </label>
+                  </div>
+                  <div class="form-check vaccination_input">
+                    <input class="form-check-input" type="radio" name="education_yrs" onChange="handleRadioData('education_yrs')" id="some_college_or_vocational_training" value="2"/>
+                    <label class="form-check-label" for="some_college_or_vocational_training">
+                        Some college or vocational training
+                    </label>
+                  </div>
+                  <div class="form-check vaccination_input">
+                    <input class="form-check-input" type="radio" name="education_yrs" onChange="handleRadioData('education_yrs')" id="associate_degree_or_higher" value="3"/>
+                    <label class="form-check-label" for="associate_degree_or_higher">
+                        Associate degree or higher
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="input-margin mb-3 row">
+                <label for="" class="col-sm-2 col-form-label">Gender?</label>
+                <div class="col-sm-10 ">
+                  <div class="form-check vaccination_input">
+                    <input class="form-check-input" type="radio" onChange="handleRadioData('gender')" name="gender" id="male" value="male" />
+                    <label class="form-check-label" for="male">
+                      Male
+                    </label>
+                  </div>
+                  <div class="form-check vaccination_input">
+                    <input class="form-check-input" type="radio" onChange="handleRadioData('gender')" name="gender" id="female" value="female" />
+                    <label class="form-check-label" for="female" >
+                      Female
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="input-margin mb-3 row">
+                <label for="" class="col-sm-2 col-form-label">Smoker?</label>
+                <div class="col-sm-10 ">
+                  <div class="form-check vaccination_input">
+                    <input class="form-check-input" type="radio" onChange="handleRadioData('smoker')" name="smoker" id="smoker" value=true />
+                    <label class="form-check-label" for="smoker">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="input-margin form-check vaccination_input">
+                    <input class="form-check-input" type="radio" onChange="handleRadioData('smoker')" name="smoker" id="not_smoker" value=false />
+                    <label class="form-check-label" for="not_smoker" >
+                      No
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="input-margin mb-3 row">
+                <label for="cigsPerDay" class="col-sm-2 col-form-label">Cigarettes Per Day?</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" id="cigsPerDay" name="cigsPerDay" placeholder="22" value=${jsondata.cigsPerDay}
+                    onchange="dataChange('cigsPerDay')" />
+                </div>
+              </div>
+
+
+              <!-- /.form-floating -->
+            </div>
+        `
+                $(".card-body").append(html);
+                $('input[name="gender"][value="' + jsondata.gender + '"]').prop('checked', true);
+                $('input[name="smoker"][value="' + jsondata.smoker + '"]').prop('checked', true);
+                $('input[name="education_yrs"][value="' + jsondata.education_yrs + '"]').prop('checked', true);
+
+            }
+            if (currStep == "2 / 3 pages") {
+                $("#title").text("2 / 3 pages");
+                html = `
+                <div class="input-margin mb-3 row">
+                    <label for="" class="col-sm-2 col-form-label">Blood Pressure Meds?</label>
+                    <div class="col-sm-10 ">
+                        <div class="form-check vaccination_input">
+                            <input class="form-check-input" type="radio" onChange="handleRadioData('BPMeds')" name="BPMeds"
+                                id="BPMeds" value=true />
+                            <label class="form-check-label" for="BPMeds">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="input-margin form-check vaccination_input">
+                            <input class="form-check-input" type="radio" onChange="handleRadioData('BPMeds')" name="BPMeds"
+                                id="not_BPMeds" value=false />
+                            <label class="form-check-label" for="not_BPMeds">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-margin mb-3 row">
+                    <label for="" class="col-sm-2 col-form-label">Prevalent Stroke?</label>
+                    <div class="col-sm-10 ">
+                        <div class="form-check vaccination_input">
+                            <input class="form-check-input" type="radio" onChange="handleRadioData('prevalentStroke')"
+                                name="prevalentStroke" id="prevalentStroke" value=true />
+                            <label class="form-check-label" for="prevalentStroke">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="input-margin form-check vaccination_input">
+                            <input class="form-check-input" type="radio" onChange="handleRadioData('prevalentStroke')"
+                                name="prevalentStroke" id="not_prevalentStroke" value=false />
+                            <label class="form-check-label" for="not_prevalentStroke">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-margin mb-3 row">
+                    <label for="" class="col-sm-2 col-form-label">Prevalent Hyp?</label>
+                    <div class="col-sm-10 ">
+                        <div class="form-check vaccination_input">
+                            <input class="form-check-input" type="radio" onChange="handleRadioData('prevalentStroke')"
+                                name="prevalentHyp" id="prevalentHyp" value=true />
+                            <label class="form-check-label" for="prevalentHyp">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="input-margin form-check vaccination_input">
+                            <input class="form-check-input" type="radio" onChange="handleRadioData('prevalentHyp')"
+                                name="prevalentHyp" id="not_prevalentHyp" value=false />
+                            <label class="form-check-label" for="not_prevalentHyp">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-margin mb-3 row">
+                    <label for="" class="col-sm-2 col-form-label">SysBP?</label>
+                    <div class="col-sm-10 ">
+                        <div class="form-check vaccination_input">
+                            <input class="form-check-input" type="radio" onChange="handleRadioData('prevalentStroke')" name="sysBP"
+                                id="sysBP" value=true />
+                            <label class="form-check-label" for="sysBP">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="input-margin form-check vaccination_input">
+                            <input class="form-check-input" type="radio" onChange="handleRadioData('sysBP')" name="sysBP"
+                                id="not_sysBP" value=false />
+                            <label class="form-check-label" for="not_sysBP">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-margin mb-3 row">
+                    <label for="" class="col-sm-2 col-form-label">diaBP?</label>
+                    <div class="col-sm-10 ">
+                        <div class="form-check vaccination_input">
+                            <input class="form-check-input" type="radio" onChange="handleRadioData('prevalentStroke')" name="diaBP"
+                                id="diaBP" value=true />
+                            <label class="form-check-label" for="diaBP">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="input-margin form-check vaccination_input">
+                            <input class="form-check-input" type="radio" onChange="handleRadioData('diaBP')" name="diaBP"
+                                id="not_diaBP" value=false />
+                            <label class="form-check-label" for="not_diaBP">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-margin mb-3 row">
+                    <label for="" class="col-sm-2 col-form-label">diabetes?</label>
+                    <div class="col-sm-10 ">
+                        <div class="form-check vaccination_input">
+                            <input class="form-check-input" type="radio" onChange="handleRadioData('prevalentStroke')"
+                                name="diabetes" id="diabetes" value=true />
+                            <label class="form-check-label" for="diabetes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="input-margin form-check vaccination_input">
+                            <input class="form-check-input" type="radio" onChange="handleRadioData('diabetes')" name="diabetes"
+                                id="not_diabetes" value=false />
+                            <label class="form-check-label" for="not_diabetes">
+                                No
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+                `
+                $(".card-body").append(html);
+                $("#prev-btn").attr("onclick", "handleStep('1 / 3 pages')");
+                $("#next-btn").attr("onclick", "handleStep('3 / 3 pages')");
+                $("#next-btn").show();
+                $("#submit-btn").hide();
+                $('input[name="BPMeds"][value="' + jsondata.BPMeds + '"]').prop('checked', true);
+                $('input[name="prevalentStroke"][value="' + jsondata.prevalentStroke + '"]').prop('checked', true);
+                $('input[name="prevalentHyp"][value="' + jsondata.prevalentHyp + '"]').prop('checked', true);
+                $('input[name="sysBP"][value="' + jsondata.sysBP + '"]').prop('checked', true);
+                $('input[name="diaBP"][value="' + jsondata.diaBP + '"]').prop('checked', true);
+                $('input[name="diabetes"][value="' + jsondata.diabetes + '"]').prop('checked', true);
+                $('input[name="TenYearCHD"][value="' + jsondata.TenYearCHD + '"]').prop('checked', true);
+            
+            }
+            
+            if (currStep == "3 / 3 pages") {
+                $("#title").html("3 / 3 pages")
+                html = `
+                <div class="input-margin mb-3 row">
+                    <label for="totChol" class="col-sm-2 col-form-label">What Is Your Total Chol?</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="totChol" name="totChol" placeholder="22" value=${jsondata.totChol} onchange="dataChange('totChol')" />
+                    </div>
+                </div>
+                <div class="input-margin mb-3 row">
+                    <label for="glucose" class="col-sm-2 col-form-label">What Is Your Glucose?</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="glucose" name="glucose" placeholder="22" value=${jsondata.glucose} onchange="dataChange('glucose')" />
+                    </div>
+                </div>
+                <div class="input-margin mb-3 row">
+                    <label for="BMI" class="col-sm-2 col-form-label">What Is Your BMI?</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="BMI" name="BMI" placeholder="22" value=${jsondata.BMI} onchange="dataChange('BMI')" />
+                    </div>
+                </div>
+                <div class="input-margin mb-3 row">
+                    <label for="heartRate" class="col-sm-2 col-form-label">What Is Your Heart Rate?</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="heartRate" name="heartRate" placeholder="22" value=${jsondata.heartRate} onchange="dataChange('heartRate')" />
+                    </div>
+                </div>
+            `
+                $(".card-body").append(html);
+                $("#prev-btn").attr("onclick", "handleStep('2 / 3 pages')");
+                $("#next-btn").attr("onclick", "handleStep('3 / 3 pages')");
+                $("#next-btn").hide();
+                $("#submit-btn").show();
+
+            }
+        }
+
+        function handleRadioData(column) {
+            jsondata[column] = $(`input[name=${column}]:checked`).val();
+        }
+
+        function handleCheckBoxData(column) {
+            if ($(`#${column}`).is(":checked")) {
+                jsondata[column] = true;
+            } else {
+                jsondata[column] = false;
+            }
+        }
+
+    </script>
+</body>
+
+</html>

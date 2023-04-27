@@ -50,6 +50,7 @@ heartRate: int = Form(...),
         print(data)
         # preprocessing
         df = pd.DataFrame([data], columns=columns)
+        df = encoding(df)
         # Seperate target variable
         # Initialize a StandardScaler object
         scaler = StandardScaler()
@@ -61,10 +62,32 @@ heartRate: int = Form(...),
 
         # result
         result = model.predict(X_scaled)
-        message = "you have heart diseases" if result[0] == 1 else "congratulation you dont have heart disease"
+        message = "you have heart disease" if result[0] == 1 else "congratulation you dont have heart disease"
         print(message)
+
         return {"message": message, "heart_disease": True if result[0] == 1 else False}
     except Exception as e:
         print(e)
         raise HTTPException(status_code=500, detail=str(e))
     
+def encoding(df):
+    # perform one hot encoding on the education column using get_dummies()
+    education_dummies = pd.get_dummies(df['education_yrs'], prefix='education_yrs')
+
+    # concatenate the education dummies DataFrame with the original DataFrame
+    df = pd.concat([df, education_dummies], axis=1)
+
+    # drop the original education column
+    df = df.drop('education_yrs', axis=1)
+
+    columns_might_missing = [
+        "education_yrs_1",
+        "education_yrs_2",
+        "education_yrs_3",
+        "education_yrs_4"
+    ]
+
+    for column in columns_might_missing:
+        if column not in df:
+            df[column] = 0
+    return df

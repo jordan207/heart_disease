@@ -92,7 +92,7 @@ function submit() {
 		}
 		loader.addClass('done');
 	};
-	// xhr.open("POST", "https://api.imjordan.me/predict", true);
-	xhr.open("POST", "http://localhost:8000/predict", true);
+	xhr.open("POST", "https://imjordan.me/api/predict", true);
+	// xhr.open("POST", "http://localhost:8000/predict", true);
 	xhr.send(formData);
 }

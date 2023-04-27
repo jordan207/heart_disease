@@ -1,7 +1,7 @@
 URL = window.URL || window.webkitURL;
 const jsondata = {
 	age: 0,
-    education_yrs: 0,
+    education_yrs: 1,
     cigsPerDay: 0,
     glucose: 0,
     totChol: 0,
@@ -220,7 +220,7 @@ function submit() {
 		}
 		loader.addClass('done');
 	};
-	// xhr.open("POST", "https://api.leadinghao.me/covid_detection", true);
+	// xhr.open("POST", "https://api.imjordan.me/predict", true);
 	xhr.open("POST", "http://localhost:8000/predict", true);
 	xhr.send(formData);
 }

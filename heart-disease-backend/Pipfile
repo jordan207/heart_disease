@@ -11,6 +11,7 @@ pandas = "*"
 gunicorn = "*"
 joblib = "*"
 scikit-learn = "*"
+numpy = "*"
 
 [dev-packages]
 

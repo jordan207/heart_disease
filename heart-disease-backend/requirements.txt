@@ -2,3 +2,7 @@ fastapi
 joblib
 numpy
 pandas
+sklearn
+python-multipart
+uvicorn
+gunicorn
